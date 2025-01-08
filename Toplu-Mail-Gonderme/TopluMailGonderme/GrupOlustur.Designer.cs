@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -74,7 +75,8 @@
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage1
             // 
@@ -83,8 +85,8 @@
             this.xtraTabPage1.Controls.Add(this.label2);
             this.xtraTabPage1.Controls.Add(this.label1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(264, 420);
-            this.xtraTabPage1.Text = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(259, 416);
+            this.xtraTabPage1.Text = "Ekle";
             // 
             // btnCreateTable
             // 
@@ -124,8 +126,8 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(264, 420);
-            this.xtraTabPage2.Text = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(259, 416);
+            this.xtraTabPage2.Text = "Güncelle";
             // 
             // dataGridView1
             // 
@@ -136,6 +138,12 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(530, 450);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(0, 0);
+            this.xtraTabPage3.Text = "Sil";
             // 
             // GrupOlustur
             // 
@@ -171,5 +179,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
     }
 }

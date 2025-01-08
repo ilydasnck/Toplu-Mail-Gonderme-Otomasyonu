@@ -39,8 +39,8 @@
             this.txtBaslik = new System.Windows.Forms.TextBox();
             this.baslik = new System.Windows.Forms.Label();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtGuncelleId = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtGuncelleIsim = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGuncelle = new System.Windows.Forms.Button();
@@ -48,8 +48,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtGuncelleBaslik = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtGuncelleId = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idSil = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.seciliSatirSil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +62,7 @@
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,21 +184,21 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(232, 443);
             this.xtraTabPage2.Text = "Güncelle";
             // 
-            // xtraTabPage3
+            // txtGuncelleId
             // 
-            this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(232, 443);
-            this.xtraTabPage3.Text = "Sil";
+            this.txtGuncelleId.Location = new System.Drawing.Point(109, 18);
+            this.txtGuncelleId.Name = "txtGuncelleId";
+            this.txtGuncelleId.Size = new System.Drawing.Size(100, 23);
+            this.txtGuncelleId.TabIndex = 56;
             // 
-            // dataGridView1
+            // label6
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(530, 450);
-            this.dataGridView1.TabIndex = 0;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(25, 17);
+            this.label6.TabIndex = 55;
+            this.label6.Text = "Id:";
             // 
             // txtGuncelleIsim
             // 
@@ -254,21 +259,61 @@
             this.label5.TabIndex = 48;
             this.label5.Text = "Başlık:";
             // 
-            // txtGuncelleId
+            // xtraTabPage3
             // 
-            this.txtGuncelleId.Location = new System.Drawing.Point(109, 18);
-            this.txtGuncelleId.Name = "txtGuncelleId";
-            this.txtGuncelleId.Size = new System.Drawing.Size(100, 23);
-            this.txtGuncelleId.TabIndex = 56;
+            this.xtraTabPage3.Controls.Add(this.idSil);
+            this.xtraTabPage3.Controls.Add(this.textBox5);
+            this.xtraTabPage3.Controls.Add(this.label7);
+            this.xtraTabPage3.Controls.Add(this.seciliSatirSil);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(232, 443);
+            this.xtraTabPage3.Text = "Sil";
             // 
-            // label6
+            // dataGridView1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 17);
-            this.label6.TabIndex = 55;
-            this.label6.Text = "Id:";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(530, 450);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // idSil
+            // 
+            this.idSil.Location = new System.Drawing.Point(21, 205);
+            this.idSil.Name = "idSil";
+            this.idSil.Size = new System.Drawing.Size(175, 23);
+            this.idSil.TabIndex = 15;
+            this.idSil.Text = "Id numarasından sil";
+            this.idSil.UseVisualStyleBackColor = true;
+            this.idSil.Click += new System.EventHandler(this.idSil_Click);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(156, 85);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(59, 23);
+            this.textBox5.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 17);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Silmek için Id girin";
+            // 
+            // seciliSatirSil
+            // 
+            this.seciliSatirSil.Location = new System.Drawing.Point(21, 153);
+            this.seciliSatirSil.Name = "seciliSatirSil";
+            this.seciliSatirSil.Size = new System.Drawing.Size(175, 23);
+            this.seciliSatirSil.TabIndex = 12;
+            this.seciliSatirSil.Text = "Seçili satırı sil";
+            this.seciliSatirSil.UseVisualStyleBackColor = true;
+            this.seciliSatirSil.Click += new System.EventHandler(this.seciliSatirSil_Click);
             // 
             // MailSablonlari
             // 
@@ -278,7 +323,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "MailSablonlari";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MailSablonları";
+            this.Text = "Mail Şablonları";
             this.Load += new System.EventHandler(this.MailSablonForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -290,6 +335,8 @@
             this.xtraTabPage1.PerformLayout();
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -319,5 +366,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtGuncelleId;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button idSil;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button seciliSatirSil;
     }
 }

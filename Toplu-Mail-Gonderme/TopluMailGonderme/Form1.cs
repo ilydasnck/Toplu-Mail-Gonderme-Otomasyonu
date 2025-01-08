@@ -1,18 +1,15 @@
 ﻿using MailKit.Net.Smtp;
-using MailKit.Security;
 using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using iText.Kernel.Pdf;
+using iText.Layout;
 using System.Windows.Forms;
+using iText.Kernel.Font;
 
 namespace TopluMailGonderme
 {
@@ -79,15 +76,21 @@ namespace TopluMailGonderme
 
         private void cmbGrup_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbGrup.SelectedItem == null) // ComboBox'ta seçim yoksa işlemi durdur
+            {
+                return;
+            }
+
             listBoxEmails.Items.Clear();
             string selectedGroup = cmbGrup.SelectedItem.ToString();
 
             try
             {
+                // Veritabanındaki 'Mail' sütununun varlığını kontrol etme
                 string checkMailColumnQuery = $@"
-            SELECT COLUMN_NAME 
-            FROM INFORMATION_SCHEMA.COLUMNS 
-            WHERE TABLE_NAME = '{selectedGroup}' AND COLUMN_NAME = 'Mail'";
+        SELECT COLUMN_NAME 
+        FROM INFORMATION_SCHEMA.COLUMNS 
+        WHERE TABLE_NAME = '{selectedGroup}' AND COLUMN_NAME = 'Mail'";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -121,6 +124,8 @@ namespace TopluMailGonderme
                 MessageBox.Show("Veritabanı hatası: " + ex.Message);
             }
         }
+
+
 
 
 
@@ -296,6 +301,105 @@ namespace TopluMailGonderme
             }
         }
 
-        
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "PDF Dosyası|*.pdf";
+                    saveFileDialog.Title = "PDF Dosyasını Kaydet";
+                    saveFileDialog.FileName = "LogKayitlari.pdf";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
+
+                        // Dosya yolunda yazma izni kontrolü
+                        if (!HasWriteAccessToDirectory(Path.GetDirectoryName(filePath)))
+                        {
+                            MessageBox.Show("Seçilen konuma yazma izniniz bulunmuyor. Lütfen başka bir konum seçin.", "İzin Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // PDF dosyasını oluşturma
+                        CreatePdf(filePath);
+
+                        MessageBox.Show("PDF başarıyla oluşturuldu ve kaydedildi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PDF oluşturulurken bir hata oluştu: " + ex.ToString(), "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Yazma izni kontrolü
+        private bool HasWriteAccessToDirectory(string directoryPath)
+        {
+            try
+            {
+                using (FileStream fs = File.Create(
+                    Path.Combine(directoryPath, Path.GetRandomFileName()),
+                    1,
+                    FileOptions.DeleteOnClose))
+                { }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void CreatePdf(string filePath)
+        {
+            try
+            {
+                using (var writer = new PdfWriter(filePath))
+                using (var pdf = new PdfDocument(writer))
+                {
+                    var document = new Document(pdf);
+
+                    // Varsayılan font kullanımı (iText kütüphanesiyle birlikte gelen fontlar)
+                    var font = PdfFontFactory.CreateFont(iText.IO.Font.Constants.StandardFonts.HELVETICA);
+
+                    // Log kayıtlarını PDF'e yazdır
+                    int counter = 0;
+                    foreach (string logEntry in listBoxLog.Items)
+                    {
+                        // Log öğesinin boş olup olmadığını kontrol et
+                        if (!string.IsNullOrWhiteSpace(logEntry))  // Boş öğeleri atla
+                        {
+                            counter++;
+                            // Fontu her bir Paragraph'a uygulayın
+                            document.Add(new iText.Layout.Element.Paragraph(logEntry).SetFont(font));
+                        }
+                    }
+
+                    // Eğer hiç veri eklenmediyse, uyarı ver
+                    if (counter == 0)
+                    {
+                        MessageBox.Show("Log kaydı bulunamadı. Lütfen geçerli log verileri eklediğinizden emin olun.", "Veri Hatası", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PDF oluşturulurken hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }

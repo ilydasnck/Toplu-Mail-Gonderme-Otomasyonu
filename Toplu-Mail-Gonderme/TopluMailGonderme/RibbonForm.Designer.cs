@@ -91,6 +91,8 @@
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -141,9 +143,11 @@
             this.MailSablonuEkle,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem4});
+            this.barButtonItem4,
+            this.barButtonItem1,
+            this.barButtonItem5});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 40;
+            this.ribbon.MaxItemId = 42;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -412,7 +416,6 @@
             this.grupGuncelle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("grupGuncelle.ImageOptions.Image")));
             this.grupGuncelle.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("grupGuncelle.ImageOptions.LargeImage")));
             this.grupGuncelle.Name = "grupGuncelle";
-            this.grupGuncelle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.grupGuncelle_ItemClick);
             // 
             // grupSil
             // 
@@ -421,7 +424,6 @@
             this.grupSil.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("grupSil.ImageOptions.Image")));
             this.grupSil.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("grupSil.ImageOptions.LargeImage")));
             this.grupSil.Name = "grupSil";
-            this.grupSil.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.grupSil_ItemClick);
             // 
             // barButtonItem32
             // 
@@ -433,8 +435,8 @@
             // 
             this.MailSablonuEkle.Caption = "Ekle";
             this.MailSablonuEkle.Id = 36;
-            this.MailSablonuEkle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.MailSablonuEkle.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.MailSablonuEkle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("MailSablonuEkle.ImageOptions.Image")));
+            this.MailSablonuEkle.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("MailSablonuEkle.ImageOptions.LargeImage")));
             this.MailSablonuEkle.Name = "MailSablonuEkle";
             this.MailSablonuEkle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -518,8 +520,8 @@
             // ribbonPageGroup14
             // 
             this.ribbonPageGroup14.ItemLinks.Add(this.grupOlustur);
-            this.ribbonPageGroup14.ItemLinks.Add(this.grupGuncelle);
-            this.ribbonPageGroup14.ItemLinks.Add(this.grupSil);
+            this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem5);
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
             this.ribbonPageGroup14.ShowCaptionButton = false;
             this.ribbonPageGroup14.Text = "Grup İşlemleri";
@@ -640,6 +642,22 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Güncelle";
+            this.barButtonItem1.Id = 40;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Sil";
+            this.barButtonItem5.Id = 41;
+            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
             // RibbonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -725,5 +743,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }

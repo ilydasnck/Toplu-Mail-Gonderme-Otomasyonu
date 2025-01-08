@@ -195,20 +195,7 @@ namespace TopluMailGonderme
 
         }
 
-        private void grupGuncelle_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            GrupOlustur guncel = new GrupOlustur();
-            guncel.MdiParent = this;
-            guncel.Show();
-
-        }
-
-        private void grupSil_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            GrupOlustur sil = new GrupOlustur();
-            sil.MdiParent = this;
-            sil.Show();
-        }
+       
 
         private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
         {

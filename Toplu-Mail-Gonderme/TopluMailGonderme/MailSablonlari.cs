@@ -167,5 +167,60 @@ namespace TopluMailGonderme
             }
         }
 
+        private void seciliSatirSil_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0) // Bir satırın seçili olduğunu kontrol et
+            {
+                // Seçili satırdan ID'yi al (örnek olarak ID sütunu)
+                int selectedID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
+
+                // Silme sorgusu oluştur
+                string komut = "DELETE FROM MailSablonlari WHERE Id = @ID";
+
+                using (SqlCommand cmd = new SqlCommand(komut, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Id", selectedID);
+
+                    // Bağlantıyı aç ve sorguyu çalıştır
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    MessageBox.Show("Kayıt başarıyla silindi.");
+                }
+
+                // Güncellenmiş verileri listele
+                Listele();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silmek için bir satır seçin.");
+            }
+        }
+
+        private void idSil_Click(object sender, EventArgs e)
+        {
+            // Seçili satırdan ID'yi al (örnek olarak ID sütunu)
+            int selectedID = Convert.ToInt32(textBox5.Text);
+
+            // Silme sorgusu oluştur
+            string komut = "DELETE FROM MailSablonlari WHERE ID = @ID";
+
+            using (SqlCommand cmd = new SqlCommand(komut, conn))
+            {
+                cmd.Parameters.AddWithValue("@ID", selectedID);
+
+                // Bağlantıyı aç ve sorguyu çalıştır
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("Kayıt başarıyla silindi.");
+            }
+
+            // Güncellenmiş verileri listele
+            Listele();
+        }
+
     }
 }

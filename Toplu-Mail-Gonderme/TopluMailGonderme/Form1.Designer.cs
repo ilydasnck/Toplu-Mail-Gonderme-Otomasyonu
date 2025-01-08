@@ -32,6 +32,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listBoxLog = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSendSingle = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,14 +69,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonAttachFile = new System.Windows.Forms.Button();
             this.textBoxAttachment = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnPdf = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -106,6 +107,27 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1924, 1055);
             this.panel4.TabIndex = 37;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnPdf);
+            this.panel5.Controls.Add(this.listBoxLog);
+            this.panel5.Controls.Add(this.label14);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(1392, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(532, 1055);
+            this.panel5.TabIndex = 40;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.Location = new System.Drawing.Point(3, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(83, 20);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "Log Kaydı";
             // 
             // panel3
             // 
@@ -141,6 +163,7 @@
             this.buttonSendSingle.TabIndex = 33;
             this.buttonSendSingle.Text = "Tekli Gönder";
             this.buttonSendSingle.UseVisualStyleBackColor = true;
+            this.buttonSendSingle.Click += new System.EventHandler(this.buttonSendSingle_Click);
             // 
             // label11
             // 
@@ -277,6 +300,7 @@
             this.buttonSend.TabIndex = 2;
             this.buttonSend.Text = "Toplu Gönder";
             this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // panel2
             // 
@@ -322,6 +346,7 @@
             this.buttonTxt.TabIndex = 3;
             this.buttonTxt.Text = "Txt dosyası seç";
             this.buttonTxt.UseVisualStyleBackColor = true;
+            this.buttonTxt.Click += new System.EventHandler(this.buttonTxt_Click);
             // 
             // label13
             // 
@@ -343,6 +368,7 @@
             this.cmbGrup.Name = "cmbGrup";
             this.cmbGrup.Size = new System.Drawing.Size(164, 24);
             this.cmbGrup.TabIndex = 20;
+            this.cmbGrup.SelectedIndexChanged += new System.EventHandler(this.cmbGrup_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -435,6 +461,7 @@
             this.buttonAttachFile.TabIndex = 23;
             this.buttonAttachFile.Text = "Dosya seç";
             this.buttonAttachFile.UseVisualStyleBackColor = true;
+            this.buttonAttachFile.Click += new System.EventHandler(this.buttonAttachFile_Click);
             // 
             // textBoxAttachment
             // 
@@ -443,25 +470,15 @@
             this.textBoxAttachment.Size = new System.Drawing.Size(230, 22);
             this.textBoxAttachment.TabIndex = 24;
             // 
-            // label14
+            // btnPdf
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.Location = new System.Drawing.Point(3, 6);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(83, 20);
-            this.label14.TabIndex = 38;
-            this.label14.Text = "Log Kaydı";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.listBoxLog);
-            this.panel5.Controls.Add(this.label14);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(1392, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(532, 1055);
-            this.panel5.TabIndex = 40;
+            this.btnPdf.Location = new System.Drawing.Point(112, 3);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(104, 23);
+            this.btnPdf.TabIndex = 39;
+            this.btnPdf.Text = "Pdf Oluştur";
+            this.btnPdf.UseVisualStyleBackColor = true;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
             // 
             // Form2
             // 
@@ -475,6 +492,8 @@
             this.Text = "Toplu Mail Gönderme";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoading)).EndInit();
@@ -482,8 +501,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -530,6 +547,7 @@
         private System.Windows.Forms.TextBox textBoxAttachment;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btnPdf;
     }
 }
 
